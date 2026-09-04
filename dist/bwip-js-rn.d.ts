@@ -1,4 +1,4 @@
-// Type definitions for bwip-js  4.5.1 (2024-08-12)
+// Type definitions for bwip-js  4.11.4 (2026-08-19)
 //
 // THIS DEFINITION FILE IS MACHINE GENERATED - DO NOT EDIT
 //
@@ -46,7 +46,7 @@ declare namespace BwipJs {
         borderleft?: number | undefined;
         borderright?: number | undefined;
         bordertop?: number | undefined;
-        boraderbottom?: number | undefined;
+        borderbottom?: number | undefined;
 
         barcolor?: string | undefined;
         backgroundcolor?: string | undefined;
@@ -76,6 +76,8 @@ declare namespace BwipJs {
 
         rotate?: 'N' | 'R' | 'L' | 'I' | undefined;
 
+        padding?: number | undefined;
+
         paddingwidth?: number | undefined;
         paddingheight?: number | undefined;
 
@@ -90,6 +92,12 @@ declare namespace BwipJs {
     export interface RawOptions extends BwippOptions {
         bcid: string;
         text: string;
+    }
+    export interface SymbolDesc {
+        bcid: string;
+        desc: string;
+        text: string;
+        opts: string;
     }
     export interface DrawingContext<T> {
         setopts?(options: RenderOptions): void;
@@ -138,6 +146,7 @@ declare namespace BwipJs {
 
     export const BWIPP_VERSION: string;
     export const BWIPJS_VERSION: string;
+    export const symbolList: readonly SymbolDesc[];
 
     // wrapper around FontLib.loadFont()
     export function loadFont(name: string, data: string | Uint8Array): void;
@@ -268,6 +277,10 @@ declare namespace BwipJs {
     export function coop2of5(opts: RenderOptions, callback: ToDataURLCallback): void;
     export function coop2of5<T>(opts: RenderOptions, drawing: DrawingContext<Promise<T>>): Promise<T>;
     export function coop2of5<T>(opts: RenderOptions, drawing: DrawingContext<T>): T;
+    export function d3aqr(opts: RenderOptions): Promise<DataURL>;
+    export function d3aqr(opts: RenderOptions, callback: ToDataURLCallback): void;
+    export function d3aqr<T>(opts: RenderOptions, drawing: DrawingContext<Promise<T>>): Promise<T>;
+    export function d3aqr<T>(opts: RenderOptions, drawing: DrawingContext<T>): T;
     export function daft(opts: RenderOptions): Promise<DataURL>;
     export function daft(opts: RenderOptions, callback: ToDataURLCallback): void;
     export function daft<T>(opts: RenderOptions, drawing: DrawingContext<Promise<T>>): Promise<T>;
@@ -492,10 +505,6 @@ declare namespace BwipJs {
     export function itf14(opts: RenderOptions, callback: ToDataURLCallback): void;
     export function itf14<T>(opts: RenderOptions, drawing: DrawingContext<Promise<T>>): Promise<T>;
     export function itf14<T>(opts: RenderOptions, drawing: DrawingContext<T>): T;
-    export function jabcode(opts: RenderOptions): Promise<DataURL>;
-    export function jabcode(opts: RenderOptions, callback: ToDataURLCallback): void;
-    export function jabcode<T>(opts: RenderOptions, drawing: DrawingContext<Promise<T>>): Promise<T>;
-    export function jabcode<T>(opts: RenderOptions, drawing: DrawingContext<T>): T;
     export function japanpost(opts: RenderOptions): Promise<DataURL>;
     export function japanpost(opts: RenderOptions, callback: ToDataURLCallback): void;
     export function japanpost<T>(opts: RenderOptions, drawing: DrawingContext<Promise<T>>): Promise<T>;

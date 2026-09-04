@@ -76,6 +76,8 @@ declare namespace BwipJs {
 
         rotate?: 'N' | 'R' | 'L' | 'I' | undefined;
 
+        padding?: number | undefined;
+
         paddingwidth?: number | undefined;
         paddingheight?: number | undefined;
 
@@ -90,6 +92,12 @@ declare namespace BwipJs {
     export interface RawOptions extends BwippOptions {
         bcid: string;
         text: string;
+    }
+    export interface SymbolDesc {
+        bcid: string;
+        desc: string;
+        text: string;
+        opts: string;
     }
     export interface DrawingContext<T> {
         setopts?(options: RenderOptions): void;
@@ -138,6 +146,7 @@ declare namespace BwipJs {
 
     export const BWIPP_VERSION: string;
     export const BWIPJS_VERSION: string;
+    export const symbolList: readonly SymbolDesc[];
 
     // wrapper around FontLib.loadFont()
     export function loadFont(name: string, data: string | Uint8Array): void;
